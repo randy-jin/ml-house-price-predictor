@@ -14,7 +14,7 @@ The code has been refactored to improve reusability and maintainability by extra
 ML-HOUSE-PRICE-PREDICTOR/
 │
 ├── images/                  # Visualizations generated during analysis
-├── dataset.csv              # Source data for house prices
+├── data/dataset.csv         # Source data for house prices
 ├── example-usage.py         # Examples of using utility functions
 ├── house-price-main.py      # Main script for house price prediction
 ├── README.md                # This documentation
@@ -81,7 +81,6 @@ The linear regression model achieves:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/ML-HOUSE-PRICE-PREDICTOR.git
    cd ML-HOUSE-PRICE-PREDICTOR
    ```
 
@@ -103,10 +102,10 @@ You can also run the prediction with different regression models:
 from example-usage import run_house_price_custom_model
 
 # Run with Ridge regression
-run_house_price_custom_model("dataset.csv", "ridge", alpha=0.5)
+run_house_price_custom_model(f"data/dataset.csv", "ridge", alpha=0.5)
 
 # Run with Lasso regression
-run_house_price_custom_model("dataset.csv", "lasso", alpha=0.01)
+run_house_price_custom_model(f"data/dataset.csv", "lasso", alpha=0.01)
 ```
 
 ## 🧩 Code Components
