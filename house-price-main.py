@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # 🏠 House Price Prediction Pipeline
-# Author: Randy Jin (Refactored)
+# Author: Randy Jin
 
 import pandas as pd
 import numpy as np
@@ -12,7 +12,7 @@ from sklearn.linear_model import LinearRegression
 # Import utility functions
 import utils
 
-def run_house_price_prediction_pipeline(data_path="dataset.csv"):
+def run_house_price_prediction_pipeline(data_path=f"data/dataset.csv"):
     """Run the complete house price prediction pipeline"""
     # Set up environment
     utils.setup_environment()
