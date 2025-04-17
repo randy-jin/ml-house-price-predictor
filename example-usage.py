@@ -82,7 +82,7 @@ def run_house_price_custom_model(data_path, model_type="ridge", alpha=1.0):
 # Example call to the function  
 if __name__ == "__main__":
     # Example with Ridge regression
-    run_house_price_custom_model("dataset.csv", "ridge", alpha=0.5)
+    run_house_price_custom_model(f"data/dataset.csv", "ridge", alpha=0.5)
     
     # Example with Lasso regression
     # run_house_price_custom_model("dataset.csv", "lasso", alpha=0.01)
