@@ -47,4 +47,42 @@ def run_house_price_custom_model(data_path, model_type="ridge", alpha=1.0):
     preprocessor = utils.create_preprocessing_pipeline(numeric_features, categorical_features)
     
     # Choose model based on type
-    if model_type.lower
+    if model_type.lower() == "ridge":
+        from sklearn.linear_model import Ridge
+        model_class = Ridge
+        model_params = {"alpha": alpha}
+    elif model_type.lower() == "lasso":
+        from sklearn.linear_model import Lasso
+        model_class = Lasso
+        model_params = {"alpha": alpha}
+    else:
+        from sklearn.linear_model import LinearRegression
+        model_class = LinearRegression
+        model_params = {}
+    
+    # Create model pipeline
+    pipeline = utils.create_model_pipeline(preprocessor, model_class, model_params)
+    
+    # Split data
+    X_train, X_test, y_train, y_test = utils.split_data(X, y)
+    
+    # Train model
+    pipeline.fit(X_train, y_train)
+    
+    # Evaluate model
+    results = utils.evaluate_model(pipeline, X_train, X_test, y_train, y_test)
+    
+    # Save model
+    model_filename = f"pkl/house_price_{model_type}_pipeline.pkl"
+    utils.save_model(pipeline, model_filename)
+    
+    print(f"\n✅ Custom model pipeline completed successfully with {model_type}")
+    return pipeline, results
+
+# Example call to the function  
+if __name__ == "__main__":
+    # Example with Ridge regression
+    run_house_price_custom_model("dataset.csv", "ridge", alpha=0.5)
+    
+    # Example with Lasso regression
+    # run_house_price_custom_model("dataset.csv", "lasso", alpha=0.01)
